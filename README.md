@@ -4,8 +4,11 @@ a php class,to resize/rotate/crop/composite/draw text...,some use ImageMagick
 //php_image_info类的功能包括:
 
   判断图片是否完整
+
   得到图片的高宽
+  
   得到图片的类型
+  
   下载图片
   
  //php_image_utils类的功能包括:（说明：调用了ImageMagick,大家使用时也可自行切换为GM）
