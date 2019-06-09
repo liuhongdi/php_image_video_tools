@@ -1,4 +1,4 @@
-# php_image_tools
+# php_image_video_tools
 a php class,to resize/rotate/crop/composite/draw text...,some use ImageMagick
 //对图片的操作功能的封装，用的是php语言，其他语言可以参考相应的做法
 //php_image_info类的功能包括:
