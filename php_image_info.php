@@ -7,13 +7,34 @@
  */
 
 
-class php_image_info{
+class php_image_info
+{
 
     //construct
 
     function __construct(){
 
     }
+
+    /*
+     *
+     * get the image file main color
+     *
+     * param:file_path  full path of image file
+     *
+     * return :rgb color:such as :226,56,59
+     *
+     * comment:need install ImageMagick
+     *
+     * */
+    function get_image_main_color($file_path){
+
+        $cmdtmb = '/usr/bin/convert convert '.$file_path.' -resize 1x1\! -format \"%[fx:int(255*r+.5)],%[fx:int(255*g+.5)],%[fx:int(255*b+.5)]\" info:- 2>&1';
+        $rettmb = shell_exec($cmdtmb);
+        return $rettmb;
+
+    }
+
 
     /*
     //check jpg/jpeg png gif is valid
@@ -86,19 +107,15 @@ class php_image_info{
 
         $origarr=explode("/",$file_path);
         $filename=$origarr[sizeof($origarr)-1];
-        //$this->origid=$filename;
-
         $arrtype=explode(".",$filename);
 
         $last_idx = sizeof($arrtype)-1;
         if (isset($arrtype[$last_idx])) {
-            //sizeof($arrtype)-1
             $origtype=strtolower($arrtype[$last_idx]);
         }else {
             $origtype="unknown";
         }
 
-        //$origtype=strtolower();
         return $origtype;
     }
 
@@ -110,11 +127,8 @@ class php_image_info{
 
     function download_image($file_path,$down_name){
 
-        //$file_path = $file;
         if(!is_file($file_path))
         {
-            //echo "对不起,你要下载的文件不存在。";
-            //return 0;
             $arr_ret = array("error"=>"1","msg"=>"file ".$file_path." not exist");
             return $arr_ret;
         }
