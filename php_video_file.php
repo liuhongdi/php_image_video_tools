@@ -14,6 +14,37 @@ class php_video_file
 
     }
 
+    /*
+
+    screenshot one frame to image from video
+    return true:success
+           false:fail
+    time_str format:hours:minutes:seconds
+
+    */
+
+    function screenshot_one_image_from_video($video_file,$image_file,$time_str="00:00:00") {
+
+        if (!is_file($video_file)) {
+
+            return array("status"=>false,"error_msg"=>"source video file ".$video_file." not exist");
+
+        }
+
+        $cmd = "/usr/bin/ffmpeg -y -ss ".$time_str." -i ".$video_file." -vframes 1 ".$image_file;
+        $ret = shell_exec($cmd." 2>&1");
+
+        if (is_file($image_file)) {
+
+            return array("status"=>true,"error_msg"=>"");
+
+        } else {
+
+            return array("status"=>false,"error_msg"=>"screenshot error");
+
+        }
+
+    }
 
     /*
      *
