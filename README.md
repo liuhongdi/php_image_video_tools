@@ -41,10 +41,17 @@ a php class,to resize/rotate/crop/composite/draw text...,some use ImageMagick
 
 //php_video_file类的功能:
 
+  截图：从视频中截取一帧保存成图片
+
   得到视频文件的时间长度(秒数)
   
   下载一个视频文件
  
+
+
+
+
+
 其他常用的功能，也会添加进来（exif/iptc的解析等）
 
 大家有宝贵意见请留言。
